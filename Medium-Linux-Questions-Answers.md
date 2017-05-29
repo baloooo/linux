@@ -49,6 +49,10 @@
 * What is Virtual Memory?
 * What is swap and what is it used for?
 * What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
+```A record: ```: Address record, Returns a 32-bit IPv4 address, most commonly used to map hostnames to an IP address of the host
+```NS record: ```: Name server record, Delegates a DNS zone to use the given authoritative name servers.
+```PTR record: ```: Pointer record, Pointer to a canonical name. Unlike a CNAME, DNS processing stops and just the name is returned. The most common use is for implementing reverse DNS lookups.
+```CNAME
 * Are there any other RRs and what are they used for?
 * What is a Split-Horizon DNS?
 * What is the sticky bit?
