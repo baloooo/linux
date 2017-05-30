@@ -49,19 +49,37 @@
 * What is Virtual Memory?
 * What is swap and what is it used for?
 * What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
-```A record: ```: Address record, Returns a 32-bit IPv4 address, most commonly used to map hostnames to an IP address of the host
-```NS record: ```: Name server record, Delegates a DNS zone to use the given authoritative name servers.
-```PTR record: ```: Pointer record, Pointer to a canonical name. Unlike a CNAME, DNS processing stops and just the name is returned. The most common use is for implementing reverse DNS lookups.
-```CNAME
+```A record ```: Address record, Returns a 32-bit IPv4 address, most commonly used to map hostnames to an IP address of the host
+```NS record ```: Name server record, Delegates a DNS zone to use the given authoritative name servers.
+```PTR record ```: Pointer record, Pointer to a canonical name. Unlike a CNAME, DNS processing stops and just the name is returned. The most common use is for implementing reverse DNS lookups.
+```CNAME ```: Canonical name record, Alias of one name to another: the DNS lookup will continue by retrying the lookup with the new name.
+```MXRecord```: Mail exchange record, Maps a domain name to a list of message transfer agents for that domain
 * Are there any other RRs and what are they used for?
 * What is a Split-Horizon DNS?
+> Split DNS is a concept that allows a hostname to resolve to one IP address on the internal network, and another on the external network.Implementation of split-horizon DNS can be accomplished with hardware-based separation or by software solutions. Hardware-based implementations run distinct DNS server devices for the desired access granularity within the networks involved. Software solutions use either multiple DNS server processes on the same hardware or special server software with the built-in capability of discriminating access to DNS zone records. The latter is a common feature of many server software implementations of the DNS protocol (cf. Comparison of DNS server software) and is sometimes the implied meaning of the term split-horizon DNS, since all other forms of implementation can be achieved with any DNS server software.
 * What is the sticky bit?
+> https://unix.stackexchange.com/questions/79395/how-does-the-sticky-bit-work
 * What does the immutable bit do to a file?
+> used with ```chattr``` command. A file with the +i attribute cannot be modified.
+It cannot be deleted or renamed, no link can be created to this file and no data can be written to the file.  When set, prevents, even the superuser, from erasing or changing the contents of the file.
 * What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
+> Underneath the file system files are represented by inodes (or is it multiple inodes not sure)
+A file in the file system is basically a link to an inode.
+A hard link then just creates another file with a link to the same underlying inode.
+When you delete a file it removes one link to the underlying inode. The inode is only deleted (or deletable/over-writable) when all links to the inode have been deleted.
+A symbolic link is a link to another name in the file system.
+Once a hard link has been made the link is to the inode. deleting renaming or moving the original file will not affect the hard link as it links to the underlying inode. Any changes to the data on the inode is reflected in all files that refer to that inode.
+Note: Hard links are only valid within the same File System. Symbolic links can span file systems as they are simply the name of another file.
 * What is an inode and what fields are stored in an inode?
+> The inode is a data structure in a Unix-style file system that describes a filesystem object such as a file or a directory. Each inode stores the attributes and disk block location(s) of the objects data. Filesystem object attributes may include metadata (times of last change,[2] access, modification), as well as owner and permission data.
+[udacity short video](https://www.youtube.com/watch?v=tMVj22EWg6A)
 * How to force/trigger a file system check on next reboot?
+[Link](https://www.cyberciti.biz/faq/linux-force-fsck-on-the-next-reboot-or-boot-sequence/)
 * What is SNMP and what is it used for?
+[askubuntu explanation](https://askubuntu.com/questions/141564/what-is-snmp-used-for)
+[digital ocean](https://www.digitalocean.com/community/tutorials/an-introduction-to-snmp-simple-network-management-protocol)
 * What is a runlevel and how to get the current runlevel?
+> [See or change runlevels](https://askubuntu.com/questions/86483/how-can-i-see-or-change-default-run-level) [Explanation of run levels](https://askubuntu.com/questions/86483/how-can-i-see-or-change-default-run-level)
 * What is SSH port forwarding?
 * What is the difference between local and remote port forwarding?
 * What are the steps to add a user to a system without using useradd/adduser?
