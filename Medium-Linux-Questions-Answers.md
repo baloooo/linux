@@ -41,13 +41,25 @@
 ```
 * ```head``` : head, by default, prints the first 10 lines of each FILE to standard output.
 * ```tail``` : tail, by default, prints the last 10 lines of each FILE to standard output. ```tail -f file.txt``` will display last lines of file and execute and update output periodically.
-* What does an ```&``` after a command do?
-* What does ```& disown``` after a command do?
+* What does an ```&``` after a command do?  What does ```& disown``` after a command do?
+```shell
+    https://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and
+```
 * What is a packet filter and how does it work?
 > Packet filtering is a firewall technique used to control network access by monitoring outgoing and incoming packets and allowing them to pass or halt based on the source and destination Internet Protocol (IP) addresses, protocols and ports.
 
 * What is Virtual Memory?
+> It is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine" which "creates the illusion to users of a very large (main) memory.
+> https://www.youtube.com/watch?v=qlH4-oHnBb8
+> https://www.geeksforgeeks.org/virtual-memory-operating-systems/
+```
 * What is swap and what is it used for?
+> Swapping is the process whereby a page of memory is copied to the preconfigured space on the hard disk, called swap space, to free up that page of memory. The combined sizes of the physical memory and the swap space is the amount of virtual memory available.
+
+> Swapping is necessary for two important reasons. First, when the system requires more memory than is physically available, the kernel swaps out less used pages and gives memory to the current application (process) that needs the memory immediately. Second, a significant number of the pages used by an application during its startup phase may only be used for initialization and then never used again. The system can swap out those pages and free the memory for other applications or even for the disk cache.
+
+> However, swapping does have a downside. Compared to memory, disks are very slow. Memory speeds can be measured in nanoseconds, while disks are measured in milliseconds, so accessing the disk can be tens of thousands times slower than accessing physical memory. The more swapping that occurs, the slower your system will be. Sometimes excessive swapping or thrashing occurs where a page is swapped out and then very soon swapped in and then swapped out again and so on. In such situations the system is struggling to find free memory and keep applications running at the same time. In this case only adding more RAM will help
+```
 * What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
 ```A record ```: Address record, Returns a 32-bit IPv4 address, most commonly used to map hostnames to an IP address of the host
 ```NS record ```: Name server record, Delegates a DNS zone to use the given authoritative name servers.
@@ -79,16 +91,22 @@ Note: Hard links are only valid within the same File System. Symbolic links can 
 [askubuntu explanation](https://askubuntu.com/questions/141564/what-is-snmp-used-for)
 [digital ocean](https://www.digitalocean.com/community/tutorials/an-introduction-to-snmp-simple-network-management-protocol)
 * What is a runlevel and how to get the current runlevel?
-> [See or change runlevels](https://askubuntu.com/questions/86483/how-can-i-see-or-change-default-run-level) [Explanation of run levels](https://askubuntu.com/questions/86483/how-can-i-see-or-change-default-run-level)
-* What is SSH port forwarding?
+> A runlevel is one of the modes that a Unix -based operating system will run in. Each runlevel has a certain number of services stopped or started, giving the user control over the behavior of the machine. Conventionally, seven runlevels exist, numbered from zero to six.
+> [See or change runlevels](https://askubuntu.com/questions/86483/how-can-i-see-or-change-default-run-level)
+* What is SSH port forwarding or ssh tunneling?
+> https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot
 * What is the difference between local and remote port forwarding?
 * What are the steps to add a user to a system without using useradd/adduser?
 * What is MAJOR and MINOR numbers of special files?
 * Describe the mknod command and when you'd use it.
 * Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
 * Describe a scenario when deleting a file, but 'df' not showing the space being freed.
+> https://unix.stackexchange.com/questions/182077/best-way-to-free-disk-space-from-deleted-files-that-are-held-open
+> https://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal
 * Describe how 'ps' works.
+> https://unix.stackexchange.com/questions/262177/how-does-the-ps-command-work
 * What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
+> https://stackoverflow.com/questions/20688982/zombie-process-vs-orphan-process
 * Explain briefly each one of the process states.
 * How to know which process listens on a specific port?
 * What is a zombie process and what could be the cause of it?
