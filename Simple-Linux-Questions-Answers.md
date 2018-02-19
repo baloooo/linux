@@ -1,4 +1,12 @@
 # Simple Linux Interview Questions:</a>
+* What is /dev?
+```shell
+This is the name of the directory in which all device files reside. Since partitions reside on hard disks, and hard disks are devices, the files representing all possible partitions reside in /dev/.
+```
+* How are device partitions named?
+```shell
+https://unix.stackexchange.com/questions/3158/hard-drive-device-partition-naming-convention-in-linux
+```
 * What is the name and the UID of the administrator user?
 ```shell
 	root# echo $UID
@@ -30,7 +38,7 @@
 	SwapCached:						0 kB
 	SwapTotal:			15859708 kB
 	SwapFree:			 15859708 kB
-	$ free -m
+	$ free -m (free output in MB or free -h for human readable)
 	total			 used			 free		 shared		buffers		 cached
 	Mem:					 750				625				125					0				 35				335
 	-/+ buffers/cache:				254				496
@@ -52,6 +60,11 @@
 	$ echo $SHELL	# $SHELL is system variables
 	/bin/bash
 ```
+Also you can add it to your ~/.profile or ~/.bashrc file.
+```shell
+	$ export PATH=$PATH:/path/to/dir
+```
+ 
 * I get "command not found" when I run ```ifconfig -a```. What can be wrong?
 ```shell
 	# if system is windows you need to use ipconfig some time $PATH variable missing ifconfig PATH
@@ -135,6 +148,9 @@
 ```
 * What commands do you know that can be used to check DNS records?
 ```shell
+    Complete list: https://blog.dnsimple.com/2015/04/common-dns-records/
+    Noteworthy:
+        https://support.dnsimple.com/articles/a-record/
 	$ nslookup www.google.com
 	Server:		172.20.10.1
 	Address:	172.20.10.1#53
@@ -154,7 +170,7 @@
 	www.google.com.		192	IN	A	172.217.25.228
 
 	# Find out domain IP
-	$ host -t a	github.com	 
+	$ host -t a	github.com	 (-t is query type, a is A record)
 	github.com has address 192.30.253.112
 	github.com has address 192.30.253.113
 	# Find out domain mail Server
