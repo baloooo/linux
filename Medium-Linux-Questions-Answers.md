@@ -109,24 +109,67 @@ Note: Hard links are only valid within the same File System. Symbolic links can 
 > https://stackoverflow.com/questions/20688982/zombie-process-vs-orphan-process
 * Explain briefly each one of the process states.
 * How to know which process listens on a specific port?
+> https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port
 * What is a zombie process and what could be the cause of it?
 * You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it?
 * Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does.
 * Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com.
 * Can you have several HTTPS virtual hosts sharing the same IP?
 * What is a wildcard certificate?
+> A wildcard certificate is a public key certificate which can be used with multiple subdomains of a domain. The principal use is for securing web sites with HTTPS
+```shell
+    A single wildcard certificate for *.example.com, will secure all these domains:
+
+    payment.example.com
+    contact.example.com
+    login-secure.example.com
+    www.example.com
+```
 * Which Linux file types do you know?
+```shell
+    Regular (~)
+    Directory files (d)
+    Block file (b)
+    Character device file (c)
+    Named pipe file (p)
+    Symbolic link file (l)
+    Socket file (s)
+```
+> https://www.linux.com/blog/file-types-linuxunix-explained-detail
 * What is the difference between a process and a thread? And parent and child processes after a fork system call?
+> https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread
+> https://stackoverflow.com/questions/15983872/difference-between-user-level-and-kernel-supported-threads
+> check: Referenes: Operating system concepts by Galvin et al. Topic: Threads -> Multithreading Models
 * What is the difference between exec and fork?
-* What is "nohup" used for?
+> Classic example is ls command execution on bash, where bash forks a sub process and exec it with
+    binaries of ls utility.
+> https://stackoverflow.com/questions/1653340/differences-between-fork-and-exec
 * What is the difference between these two commands?
  * ```myvar=hello```
  * ```export myvar=hello```
+> https://stackoverflow.com/questions/7328223/unix-export-command
+ ```shell
+    ```myvar=hello``` will only set this variable in current process
+    ```export myvar=hello``` will set this variable in current process and all child processes
+ ```
 * How many NTP servers would you configure in your local ntp.conf?
+> four NTP servers is the recommended minimum. Four servers protects against one incorrect timesource, or "falseticker". For more information refer to Best practices for NTP
 * What does the column 'reach' mean in ```ntpq -p``` output?
 * You need to upgrade kernel at 100-1000 servers, how you would do this?
+> Use tools like Ansible which can execute chain of commands on multiple servers in parallel.
 * How can you get Host, Channel, ID, LUN of SCSI disk?
 * How can you limit process memory usage?
+> bash has ulimit utility. https://stackoverflow.com/questions/26860822/how-limit-memory-usage-for-a-single-linux-process-and-not-kill-the-process
+> Sandboxing your app in to Cgroup,
+> https://en.wikipedia.org/wiki/Cgroups
+> https://www.mjmwired.net/kernel/Documentation/cgroups/memory.txt
+
 * What is bash quick substitution/caret replace(^x^y)?
+> https://stackoverflow.com/questions/2149482/caret-search-and-replace-in-bash-shell
 * Do you know of any alternative shells? If so, have you used any?
+> zsh, tcsh
 * What is a tarpipe (or, how would you go about copying everything, including hardlinks and special files, from one server to another)?
+```shell
+    $ tar czf - <files> | ssh user@host "cd /wherever && tar xvzf -"
+    creates a tar (c: create, z: compress, f: file) and then pipe this to an external host using ssh.
+```
